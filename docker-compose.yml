@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  tgcf:
+    build: .
+    image: tgcf:latest
+    container_name: tgcf
+    restart: always
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./tgcf.config.json:/app/tgcf.config.json
+      - ./tgcf.live.json:/app/tgcf.live.json
+      - ./.env:/app/.env
+    environment:
+      - PYTHONUNBUFFERED=1
